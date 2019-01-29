@@ -10,9 +10,10 @@ class App extends Component {
   componentDidMount() {
     this.consultarNoticias();
   }
-  consultarNoticias = () => {
-    let url =
-      "https://newsapi.org/v2/top-headLines?country=mx&category=general&apiKey=f8e45f2d74704609bdd951e575ffcf63";
+  consultarNoticias = (categoria = 'General') => {
+    console.log(categoria)
+    let url = `https://newsapi.org/v2/top-headLines?country=mx&category=${categoria}&apiKey=f8e45f2d74704609bdd951e575ffcf63`;
+    console.log(url)
     fetch(url)
       .then(respuesta => {
         return respuesta.json();
@@ -20,7 +21,6 @@ class App extends Component {
       .then(noticias => {
         this.setState({ noticias: noticias.articles });
       });
-    console.log(url);
   };
   render() {
     //const api = 'f8e45f2d74704609bdd951e575ffcf63';
@@ -28,7 +28,7 @@ class App extends Component {
       <div className="contenedor-app">
         <Header titulo="Noticias" />
         <div className="contendor white contenedor-noticias">
-          <Formulario />
+          <Formulario consultarNoticias={this.consultarNoticias} />
           <Noticias noticias={this.state.noticias} />
         </div>
       </div>

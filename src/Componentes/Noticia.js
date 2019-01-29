@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Noticias from './Noticias';
+//import Noticias from './Noticias';
 const Noticia = (noticia) => {
     const { title, description, source, url, urlToImage } = noticia.noticia
     return (
