@@ -2,17 +2,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from "react";
 //import PropTypes from "prop-types";
 class Formulario extends Component {
-
   categoriaRef = React.createRef();
   cambiarCategoria = (e) => {
-
     e.preventDefault();
     //enviar por props
     let nCategoria = this.categoriaRef.current.value;
     this.props.consultarNoticias(nCategoria);
   }
-
-
   state = {};
   render() {
     return (
@@ -45,5 +41,10 @@ class Formulario extends Component {
     );
   }
 }
-Formulario.PropTypes
+
+
+Formulario.propTypes = {
+  consultarNoticias: PropTypes.func.isRequired
+}
+
 export default Formulario;
